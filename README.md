@@ -10,7 +10,7 @@ Steps:
   
   3.  Install Docekr-Heat plugin using link https://github.com/openstack/heat/tree/stable/icehouse/contrib/docker 
       a. Copy contents of above directory to /usr/heat diretory
-      b. update PATH_DIRS to include the path /usr/heat/docker
+      b. update PATH_DIRS variable in heat.conf file to include the path /usr/heat/docker
       
   4. pull following images from docker registry 
       a. https://registry.hub.docker.com/u/rishineo/wordpress_fil2
