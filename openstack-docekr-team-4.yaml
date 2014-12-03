@@ -1,0 +1,32 @@
+heat_template_version: 2013-05-23
+
+description: >
+  Docker example template, you need to docker pull samalba/wordpress and samalba/mysql first.
+
+resources:
+  blog:
+    type: DockerInc::Docker::Container
+    depends_on: [database]
+    properties:
+      image: rishineo/wordpress_file2
+      docker_endpoint: 'tcp://127.0.0.1:5555'
+      cmd: ['/run.sh']
+      env:
+        - DB_PASSWORD=iii
+        - {"Fn::Join": ["=", ["DB_PORT_3306_TCP_ADDR", { get_attr: [database, network_ip]}]]}	
+ 
+  database:
+        type: DockerInc::Docker::Container
+        properties:
+            image: rishineo/mysql_dbpass
+            docker_endpoint: 'tcp://127.0.0.1:5555'
+            cmd: ['/run.sh']
+  
+outputs:
+  info:
+    description: IP address of server1 in private network
+    value:
+      str_replace:
+        template: http://host
+        params:
+          host: { get_attr: [blog, network_ip] }
