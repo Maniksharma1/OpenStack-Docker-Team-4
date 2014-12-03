@@ -16,7 +16,7 @@ Steps:
       a. https://registry.hub.docker.com/u/rishineo/wordpress_fil2
       b. https://registry.hub.docker.com/u/rishineo/mysql_dbpass
       
-  4. Start Docker deamon to listen at some specific port number. (We need this in specify in Heat template)
+  4. Start Docker deamon to listen at some specific port number. (We need this in specify in Heat template - docker_endpoint)
   
   5. Use the Heat template (two-tier-app.yaml) in the repository
   
