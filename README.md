@@ -5,20 +5,24 @@ Configure OpenStack with docker and deploy a 3 tier application
 
 Steps:
   1.  Install OpenStack
+      Link - git clone https://github.com/openstack-dev/devstack.git 
   
-  2.  Install Docker 
+  2.  Install Docker
+      Link - https://docs.docker.com/installation/ubuntulinux/ 
   
   3.  Install Docekr-Heat plugin using link https://github.com/openstack/heat/tree/stable/icehouse/contrib/docker 
       a. Copy contents of above directory to /usr/heat diretory
       b. update PATH_DIRS variable in heat.conf file to include the path /usr/heat/docker
       
-  4. pull following images from docker registry 
-      a. https://registry.hub.docker.com/u/rishineo/wordpress_fil2
+      Note - after installing Docker-Heat plugin, python 'six' library may fail. To fix the issue. Update 'six' library using command - sudo pip install -U six
+
+  4. Pull following images from docker registry 
+      a. https://registry.hub.docker.com/u/rishineo/wordpress_file2
       b. https://registry.hub.docker.com/u/rishineo/mysql_dbpass
       
-  4. Start Docker deamon to listen at some specific port number. (We need this in specify in Heat template - docker_endpoint)
+  4. Start Docker deamon to listen at some specific port number. We need specify this port number in Heat template as 'docker_endpoint' to which HEAT can contact Docker API.
   
-  5. Use the Heat template (two-tier-app.yaml) in the repository
+  5. Use the Heat template (two-tier-app.yaml) in the repository. 
   
   6. Go to Orchestration->Stacks
       a. Click on Create Stack
